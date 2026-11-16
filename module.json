@@ -1,0 +1,62 @@
+{
+  "id": "rwa-helpful-bits",
+  "title": "Roll With Advantage: Helpful Bits",
+  "description": "A grab-bag of quality-of-life tweaks for running D&D 5e (2024 rules) in Foundry: an alphabetized, labelled condition picker on the Token HUD, condition rules posted to chat when a condition is applied, automatic token animations for conditions, and per-player Hunter's Mark status effects.",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "14"
+  },
+  "authors": [
+    {
+      "name": "joebags99",
+      "flags": {}
+    }
+  ],
+  "relationships": {
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "5.0.0",
+          "verified": "6.1.0"
+        }
+      }
+    ],
+    "recommends": [
+      {
+        "id": "sequencer",
+        "type": "module",
+        "reason": "Used to play looping JB2A animations on tokens that have a condition."
+      },
+      {
+        "id": "JB2A_DnD5e",
+        "type": "module",
+        "reason": "Provides the animation files used by the default condition animations."
+      },
+      {
+        "id": "tokenmagic",
+        "type": "module",
+        "reason": "Optional fallback: token filters (glow, blur, desaturate) for conditions that have no animation file."
+      }
+    ]
+  },
+  "esmodules": [
+    "scripts/main.mjs"
+  ],
+  "styles": [
+    "styles/rwa-helpful-bits.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "url": "https://github.com/joebags99/rwa-helpful-bits",
+  "manifest": "https://raw.githubusercontent.com/joebags99/rwa-helpful-bits/main/module.json",
+  "download": "https://github.com/joebags99/rwa-helpful-bits/archive/refs/heads/main.zip",
+  "license": "LICENSE"
+}

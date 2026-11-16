@@ -1,0 +1,9 @@
+<div class="rwa-hb-config-body">
+  <p class="hint">{{localize "RWAHB.AnimationConfig.Hint"}}</p>
+  <ul class="rwa-hb-status">
+    <li class="{{#if sequencer}}on{{else}}off{{/if}}"><i class="fas {{#if sequencer}}fa-check{{else}}fa-xmark{{/if}}"></i> Sequencer</li>
+    <li class="{{#if jb2a}}on{{else}}off{{/if}}"><i class="fas {{#if jb2a}}fa-check{{else}}fa-xmark{{/if}}"></i> JB2A</li>
+    <li class="{{#if tmfx}}on{{else}}off{{/if}}"><i class="fas {{#if tmfx}}fa-check{{else}}fa-xmark{{/if}}"></i> Token Magic FX</li>
+  </ul>
+  <textarea name="json" spellcheck="false" rows="24">{{json}}</textarea>
+</div>

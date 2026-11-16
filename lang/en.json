@@ -1,0 +1,92 @@
+{
+  "RWAHB": {
+    "Settings": {
+      "alphabetizeHud": {
+        "Name": "Alphabetize Token HUD conditions",
+        "Hint": "Sort the status effect picker on the Token HUD alphabetically by name instead of the system's default order."
+      },
+      "hudPinned": {
+        "Name": "Pin these conditions first",
+        "Hint": "Status ids (comma or space separated) to keep at the top of the picker, before the alphabetical list. Default: dead. Leave blank for a purely alphabetical list."
+      },
+      "hudLabels": {
+        "Name": "Show condition names on the Token HUD",
+        "Hint": "Show each condition's name next to its icon in the Token HUD picker (per user)."
+      },
+      "hudColumns": {
+        "Name": "Token HUD picker columns",
+        "Hint": "How many columns of named conditions to show in the picker (per user)."
+      },
+      "postConditions": {
+        "Name": "Post condition rules to chat",
+        "Hint": "When a condition is applied to a creature, post a chat card explaining what that condition does."
+      },
+      "postRemovals": {
+        "Name": "Post when a condition ends",
+        "Hint": "Also post a short line when a condition is removed from a creature."
+      },
+      "postRiders": {
+        "Name": "Post rider conditions too",
+        "Hint": "Some conditions automatically add others (Unconscious also adds Prone). Enable this to post a card for the added condition as well."
+      },
+      "conditionTextSource": {
+        "Name": "Condition rules text",
+        "Hint": "Where the condition description comes from. The system's rules pages carry the full 2024 text and are used whenever available; the built-in text is a shorter SRD 5.2 summary.",
+        "System": "System rules journal (falls back to built-in)",
+        "Builtin": "Built-in 2024 summary (falls back to system)"
+      },
+      "chatVisibility": {
+        "Name": "Chat card visibility",
+        "Hint": "Who sees the condition and Hunter's Mark chat cards.",
+        "Public": "Everyone",
+        "GM": "GM only (whispered)"
+      },
+      "animationsEnabled": {
+        "Name": "Animate conditions on tokens",
+        "Hint": "Play a looping animation on a token while it has a condition. Uses Sequencer + JB2A when installed, otherwise Token Magic FX filters where configured."
+      },
+      "animationConfig": {
+        "Name": "Condition animations",
+        "Label": "Configure animations",
+        "Hint": "Choose which animation (Sequencer database path or file) or Token Magic FX filter plays for each condition."
+      },
+      "marks": {
+        "Name": "Hunter's Marks",
+        "Hint": "One per line as Name|color. Each line adds a '<Name>'s Mark' status effect to the Token HUD. Colors: red, orange, yellow, green, blue, purple, pink, white. Reload after changing."
+      },
+      "marksExclusive": {
+        "Name": "One mark per hunter",
+        "Hint": "Applying a character's mark to a creature removes that character's mark from every other creature on the scene."
+      },
+      "marksPostChat": {
+        "Name": "Announce marks in chat",
+        "Hint": "Post a short chat message when a Hunter's Mark is applied or removed."
+      },
+      "marksAnimate": {
+        "Name": "Animate marks",
+        "Hint": "Play the Hunter's Mark animation on marked tokens (needs Sequencer + JB2A, or Token Magic FX)."
+      }
+    },
+    "AnimationConfig": {
+      "Title": "Condition Animations",
+      "Hint": "JSON map of status id to animation. Each entry can have a \"sequencer\" block (file: a Sequencer database path such as jb2a.markers.poison.dark_green.02 or a direct file path; scale; offsetY in grid units; opacity; tint; belowToken) and/or a \"tmfx\" list of Token Magic FX filter parameters. Set an entry to null to disable it. Unknown entries are ignored.",
+      "Reset": "Reset to defaults",
+      "Saved": "Condition animations saved.",
+      "InvalidJSON": "The animation map is not valid JSON: {error}",
+      "NotObject": "The animation map must be a JSON object keyed by status id."
+    },
+    "Chat": {
+      "Applied": "{name} is now {condition}.",
+      "Removed": "{name} is no longer {condition}."
+    },
+    "Marks": {
+      "Name": "{name}'s Mark",
+      "Description": "This creature is the quarry of {name}'s Hunter's Mark.",
+      "Applied": "{owner} marks {target} as their quarry.",
+      "Removed": "{owner}'s mark on {target} ends.",
+      "Unknown": "No Hunter's Mark is configured for \"{name}\". Add it in the module settings.",
+      "NoTarget": "Target or select a token first.",
+      "NoPermission": "You don't have permission to modify {name}."
+    }
+  }
+}
