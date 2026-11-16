@@ -48,7 +48,7 @@ export function repairStatusEffects() {
   }
 
   CONFIG.statusEffects = rebuilt;
-  warn(`CONFIG.statusEffects had been turned into an array by another module; rebuilt it as an object with ${Object.keys(rebuilt).length} entries.`
+  log(`Another module had turned CONFIG.statusEffects into an array; rebuilt it as an object with ${Object.keys(rebuilt).length} entries.`
     + (restored.length ? ` Restored: ${restored.join(", ")}` : ""));
   return restored;
 }
