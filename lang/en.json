@@ -1,6 +1,10 @@
 {
   "RWAHB": {
     "Settings": {
+      "repairStatusEffects": {
+        "Name": "Repair the status effect list",
+        "Hint": "Foundry v14 keeps the status effect list as an object keyed by id. If another module turns it back into an array (which hides conditions from the Token HUD and breaks applying them), rebuild it and restore any dnd5e conditions that were lost. A warning is logged to the console when this happens."
+      },
       "alphabetizeHud": {
         "Name": "Alphabetize Token HUD conditions",
         "Hint": "Sort the status effect picker on the Token HUD alphabetically by name instead of the system's default order."

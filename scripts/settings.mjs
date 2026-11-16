@@ -17,7 +17,8 @@ export const SETTINGS = {
   marks: "marks",
   marksExclusive: "marksExclusive",
   marksPostChat: "marksPostChat",
-  marksAnimate: "marksAnimate"
+  marksAnimate: "marksAnimate",
+  repairStatusEffects: "repairStatusEffects"
 };
 
 export function get(key) {
@@ -36,6 +37,10 @@ export function registerSettings() {
   });
 
   /* ---------------- Token HUD ---------------- */
+
+  register(SETTINGS.repairStatusEffects, {
+    scope: "world", config: true, type: Boolean, default: true
+  });
 
   register(SETTINGS.alphabetizeHud, {
     scope: "world", config: true, type: Boolean, default: true, requiresReload: true
