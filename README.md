@@ -41,10 +41,11 @@ While a token has a condition, a looping animation plays on it.
   `tint`, `hue`, `opacity`, `belowToken` and `playbackRate` are also accepted. Set an entry to `null` to disable it.
 
 ### 4. Hunter's Marks for your players
-The *Hunter's Marks* setting (default `Xanthe|red` and `Marik|green`, one per line as `Name|color`) adds a
+The *Hunter's Marks* setting (one per line as `Name|color` or `Name|color|animation`) adds a
 **"Xanthe's Mark"** / **"Marik's Mark"** status effect to the Token HUD with its own coloured icon.
-- Applying a mark posts "Xanthe marks Frost Giant as their quarry." and plays the JB2A Hunter's Mark loop, recoloured
-  to match the icon (Patreon colour variants are used when present).
+- Applying a mark posts "Xanthe marks Frost Giant as their quarry." and plays an animation on the quarry: the optional third
+  field names any Sequencer database path (the defaults use the JB2A energy-strand markers, blue-purple for Xanthe and green
+  for Marik); without it the JB2A Hunter's Mark loop in the icon colour is used.
 - *One mark per hunter* (on by default) removes the same mark from every other creature on the scene, because
   Hunter's Mark only ever has one quarry.
 - Colours: red, orange, yellow, green, blue, purple, pink, white. Reload after editing the list.

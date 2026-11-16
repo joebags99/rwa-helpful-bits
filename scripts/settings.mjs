@@ -111,7 +111,7 @@ export function registerSettings() {
   /* ---------------- Hunter's Marks ---------------- */
 
   register(SETTINGS.marks, {
-    scope: "world", config: true, type: String, default: "Xanthe|red\nMarik|green",
+    scope: "world", config: true, type: String, default: "Xanthe|purple|jb2a.energy_strands.02.marker.bluepurple\nMarik|green|jb2a.energy_strands.02.marker.green",
     requiresReload: true
   });
 

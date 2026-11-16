@@ -14,8 +14,8 @@ function slugify(name) {
 }
 
 /**
- * Parse the marks setting. One mark per line: `Name|color`.
- * @returns {{id: string, name: string, owner: string, color: string, hex: string, img: string}[]}
+ * Parse the marks setting. One mark per line: `Name|color` or `Name|color|sequencer path`.
+ * @returns {{id: string, name: string, owner: string, color: string, hex: string, img: string, file: string|null}[]}
  */
 export function getMarks() {
   const raw = String(settings.get(settings.SETTINGS.marks) ?? "");
@@ -24,7 +24,7 @@ export function getMarks() {
   for ( const line of raw.split(/\r?\n/) ) {
     const trimmed = line.trim();
     if ( !trimmed || trimmed.startsWith("#") ) continue;
-    const [namePart, colorPart] = trimmed.split("|").map(s => s.trim());
+    const [namePart, colorPart, filePart] = trimmed.split("|").map(s => s.trim());
     if ( !namePart ) continue;
     const color = MARK_COLORS[(colorPart ?? "").toLowerCase()] ? colorPart.toLowerCase() : "red";
     const slug = slugify(namePart);
@@ -36,7 +36,8 @@ export function getMarks() {
       name: game.i18n.format("RWAHB.Marks.Name", { name: namePart }),
       color,
       hex: MARK_COLORS[color].hex,
-      img: `modules/${MODULE_ID}/assets/marks/mark-${color}.svg`
+      img: `modules/${MODULE_ID}/assets/marks/mark-${color}.svg`,
+      file: filePart || null
     });
   }
   return marks;
@@ -88,7 +89,11 @@ export function registerMarkStatusEffects() {
 export function markAnimationSpec(mark) {
   const spec = foundry.utils.deepClone(MARK_ANIMATION);
   const colorInfo = MARK_COLORS[mark.color];
-  if ( spec.sequencer ) {
+  if ( spec.sequencer && mark.file ) {
+    // An explicit animation chosen for this hunter: play it as-is, no recolouring.
+    spec.sequencer.file = mark.file;
+    spec.sequencer.fallback = MARK_ANIMATION.sequencer.fallback;
+  } else if ( spec.sequencer ) {
     spec.sequencer.file = spec.sequencer.file.replace("{color}", mark.color);
     // When the colour variant doesn't exist (free JB2A only ships green) the fallback green loop is
     // hue-shifted to the right colour by playStatusAnimation.

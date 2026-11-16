@@ -2,7 +2,7 @@
   "id": "rwa-helpful-bits",
   "title": "Roll With Advantage: Helpful Bits",
   "description": "A grab-bag of quality-of-life tweaks for running D&D 5e (2024 rules) in Foundry: an alphabetized, labelled condition picker on the Token HUD, condition rules posted to chat when a condition is applied, automatic token animations for conditions, and per-player Hunter's Mark status effects.",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "compatibility": {
     "minimum": "13",
     "verified": "14"

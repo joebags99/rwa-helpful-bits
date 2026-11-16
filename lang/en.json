@@ -56,7 +56,7 @@
       },
       "marks": {
         "Name": "Hunter's Marks",
-        "Hint": "One per line as Name|color. Each line adds a '<Name>'s Mark' status effect to the Token HUD. Colors: red, orange, yellow, green, blue, purple, pink, white. Reload after changing."
+        "Hint": "One per line as Name|color or Name|color|animation. Each line adds a '<Name>'s Mark' status effect to the Token HUD. Colors (for the icon): red, orange, yellow, green, blue, purple, pink, white. The optional animation is a Sequencer database path such as jb2a.energy_strands.02.marker.green; without one the JB2A Hunter's Mark loop in the icon colour is used. Reload after changing."
       },
       "marksExclusive": {
         "Name": "One mark per hunter",
