@@ -23,15 +23,9 @@ export function applyStatusEffectOrder() {
     if ( pa !== pb ) return pa - pb;
     return loc(a.name).localeCompare(loc(b.name), game.i18n.lang, { sensitivity: "base" });
   });
+  // Foundry v14 sorts the palette by `order` (then name); v13 ignores it, so onRenderTokenHUD also sorts the DOM.
+  // The container itself is deliberately left untouched: other code looks entries up by key.
   sorted.forEach((e, i) => e.order = i + 1);
-
-  // Rewrite the container in place so that other modules holding a reference still see the change.
-  const effects = CONFIG.statusEffects;
-  if ( Array.isArray(effects) ) effects.splice(0, effects.length, ...sorted);
-  else {
-    for ( const key of Object.keys(effects) ) delete effects[key];
-    for ( const e of sorted ) effects[e.id] = e;
-  }
 }
 
 /* -------------------------------------------- */
@@ -141,6 +135,10 @@ export function onRenderTokenHUD(app, html) {
  * Call from the console as game.modules.get("rwa-helpful-bits").api.debugHud() with a HUD open.
  */
 export function debugHud() {
+  const container = CONFIG.statusEffects ?? {};
+  const badKeys = Array.isArray(container) ? [] : Object.entries(container).filter(([k, v]) => v?.id !== k).map(([k, v]) => `${k} -> ${v?.id}`);
+  console.log(`${MODULE_ID} | container type:`, Array.isArray(container) ? "array" : container.constructor?.name, "| keys not matching ids:", badKeys);
+  console.log(`${MODULE_ID} | active modules:`, game.modules.filter(m => m.active).map(m => `${m.id}@${m.version}`).join(", "));
   const configured = statusEffectList().filter(e => e.hud !== false).map(e => `${e.id} (${loc(e.name)}, _id=${e._id}, order=${e.order})`);
   const palette = document.querySelector("#token-hud .status-effects, .token-hud .status-effects");
   const shown = palette ? Array.from(palette.querySelectorAll("[data-status-id]")).map(el => el.dataset.statusId) : [];
