@@ -40,9 +40,9 @@ While a token has a condition, a looping animation plays on it.
   `tint`, `hue`, `opacity`, `belowToken` and `playbackRate` are also accepted. Set an entry to `null` to disable it.
 
 ### 4. Hunter's Marks for your players
-The *Hunter's Marks* setting (default `Xanthi|red` and `Merrick|green`, one per line as `Name|color`) adds a
-**"Xanthi's Mark"** / **"Merrick's Mark"** status effect to the Token HUD with its own coloured icon.
-- Applying a mark posts "Xanthi marks Frost Giant as their quarry." and plays the JB2A Hunter's Mark loop, recoloured
+The *Hunter's Marks* setting (default `Xanthe|red` and `Marik|green`, one per line as `Name|color`) adds a
+**"Xanthe's Mark"** / **"Marik's Mark"** status effect to the Token HUD with its own coloured icon.
+- Applying a mark posts "Xanthe marks Frost Giant as their quarry." and plays the JB2A Hunter's Mark loop, recoloured
   to match the icon (Patreon colour variants are used when present).
 - *One mark per hunter* (on by default) removes the same mark from every other creature on the scene, because
   Hunter's Mark only ever has one quarry.
@@ -53,15 +53,15 @@ Everything is exposed on `game.modules.get("rwa-helpful-bits").api`. A one-line 
 it toggles the mark on the targeted tokens (or the selected ones if nothing is targeted):
 
 ```js
-game.modules.get("rwa-helpful-bits").api.toggleMark("Xanthi");
+game.modules.get("rwa-helpful-bits").api.toggleMark("Xanthe");
 ```
 
 Other handy calls:
 
 ```js
 const api = game.modules.get("rwa-helpful-bits").api;
-api.toggleMark("Merrick", canvas.tokens.controlled, { active: false }); // force off
-api.clearMark("Xanthi");                                                // remove from the whole scene
+api.toggleMark("Marik", canvas.tokens.controlled, { active: false }); // force off
+api.clearMark("Xanthe");                                                // remove from the whole scene
 api.postCondition(actor, "grappled");                                   // post a condition card by hand
 api.refreshTokenAnimations(token);                                      // rebuild animations from current statuses
 ```

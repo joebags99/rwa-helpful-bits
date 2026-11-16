@@ -106,7 +106,7 @@ export function registerSettings() {
   /* ---------------- Hunter's Marks ---------------- */
 
   register(SETTINGS.marks, {
-    scope: "world", config: true, type: String, default: "Xanthi|red\nMerrick|green",
+    scope: "world", config: true, type: String, default: "Xanthe|red\nMarik|green",
     requiresReload: true
   });
 

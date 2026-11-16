@@ -217,7 +217,7 @@ function resolveTokens(tokens) {
 
 /**
  * Toggle a character's Hunter's Mark on the targeted (or selected) tokens.
- * @param {string} ownerName          e.g. "Xanthi"
+ * @param {string} ownerName          e.g. "Xanthe"
  * @param {Token[]} [tokens]          Tokens to toggle. Defaults to targets, then controlled tokens.
  * @param {object} [options]
  * @param {boolean} [options.active]  Force on (true) or off (false) instead of toggling.
