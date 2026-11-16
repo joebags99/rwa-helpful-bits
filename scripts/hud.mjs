@@ -148,6 +148,15 @@ export function debugHud() {
   console.log(`${MODULE_ID} | configured status effects (${configured.length}):\n` + configured.join("\n"));
   console.log(`${MODULE_ID} | shown in HUD (${shown.length}):`, shown);
   console.log(`${MODULE_ID} | configured but NOT shown:`, missing);
-  if ( palette ) console.log(`${MODULE_ID} | first HUD control markup:`, palette.querySelector("[data-status-id]")?.outerHTML);
+  if ( !palette ) console.log(`${MODULE_ID} | no .status-effects palette in the DOM (open a token HUD and expand the conditions first)`);
+  else {
+    const hidden = Array.from(palette.querySelectorAll("[data-status-id]")).filter(el => {
+      const r = el.getBoundingClientRect();
+      return r.width === 0 || r.height === 0 || getComputedStyle(el).display === "none";
+    }).map(el => el.dataset.statusId);
+    console.log(`${MODULE_ID} | rendered but zero-size/hidden:`, hidden);
+    console.log(`${MODULE_ID} | palette classes:`, palette.className, "| child count:", palette.children.length);
+    console.log(`${MODULE_ID} | palette markup:\n` + palette.outerHTML);
+  }
   return { configured, shown, missing };
 }

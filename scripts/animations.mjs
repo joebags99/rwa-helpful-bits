@@ -139,16 +139,24 @@ export async function stopStatusAnimation(tokenDoc, statusId) {
   }
   if ( hasTokenMagic() && tokenDoc.object ) {
     try {
-      const filters = TokenMagic.getFilters(tokenDoc.object) ?? [];
       const prefix = `${MODULE_ID}-${statusId}-`;
-      for ( const f of filters ) {
-        const id = f.filterId ?? f.filterInternalId;
-        if ( typeof id === "string" && id.startsWith(prefix) ) await TokenMagic.deleteFilters(tokenDoc.object, id);
+      for ( const id of tmfxFilterIds(tokenDoc) ) {
+        if ( id.startsWith(prefix) ) await TokenMagic.deleteFilters(tokenDoc.object, id);
       }
     } catch(err) {
       warn(`Token Magic FX failed to remove ${statusId}`, err);
     }
   }
+}
+
+/**
+ * The Token Magic FX filter ids currently stored on a token (TMFX keeps them in a token flag).
+ * @param {TokenDocument} tokenDoc
+ * @returns {string[]}
+ */
+function tmfxFilterIds(tokenDoc) {
+  const flags = tokenDoc.flags?.tokenmagic?.filters ?? [];
+  return flags.map(f => f?.tmFilters?.tmFilterId ?? f?.filterId).filter(id => typeof id === "string");
 }
 
 /**
@@ -170,8 +178,7 @@ export async function refreshTokenAnimations(tokenDoc, specFor = getAnimationSpe
   }
   if ( hasTokenMagic() && tokenDoc.object ) {
     try {
-      for ( const f of (TokenMagic.getFilters(tokenDoc.object) ?? []) ) {
-        const id = f.filterId ?? "";
+      for ( const id of tmfxFilterIds(tokenDoc) ) {
         if ( id.startsWith(`${MODULE_ID}-`) ) await TokenMagic.deleteFilters(tokenDoc.object, id);
       }
     } catch(err) { warn("Failed to clear Token Magic filters", err); }

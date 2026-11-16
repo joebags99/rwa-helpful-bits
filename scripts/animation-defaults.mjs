@@ -100,6 +100,9 @@ export const DEFAULT_ANIMATIONS = {
   malnutrition: {
     sequencer: { file: "jb2a.markers.skull.purple.02", scale: 0.5, offsetY: -0.55, opacity: 0.85 }
   },
+  inaudible: {
+    sequencer: { file: "jb2a.markers.mute.dark_red.03", scale: 0.55, offsetY: -0.55 }
+  },
   silenced: {
     sequencer: { file: "jb2a.markers.mute.dark_red.02", scale: 0.55, offsetY: -0.55 }
   },
