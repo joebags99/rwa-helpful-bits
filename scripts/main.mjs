@@ -1,6 +1,6 @@
 import { MODULE_ID, log, isResponsibleClient } from "./constants.mjs";
 import { registerSettings } from "./settings.mjs";
-import { applyStatusEffectOrder, onRenderTokenHUD } from "./hud.mjs";
+import { applyStatusEffectOrder, onRenderTokenHUD, debugHud } from "./hud.mjs";
 import * as conditions from "./conditions.mjs";
 import * as animations from "./animations.mjs";
 import * as marks from "./marks.mjs";
@@ -35,7 +35,8 @@ Hooks.once("ready", () => {
     refreshTokenAnimations: tokenDoc => animations.refreshTokenAnimations(
       tokenDoc?.document ?? tokenDoc, id => marks.specForStatus(id, animations.getAnimationSpec)),
     getAnimationMap: animations.getAnimationMap,
-    defaultAnimations: DEFAULT_ANIMATIONS
+    defaultAnimations: DEFAULT_ANIMATIONS,
+    debugHud
   };
   log("Ready", { sequencer: animations.hasSequencer(), tokenMagic: animations.hasTokenMagic() });
 });

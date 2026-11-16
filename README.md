@@ -27,9 +27,8 @@ explains what the condition does, so nobody has to look it up. A short line is p
 While a token has a condition, a looping animation plays on it.
 - Uses **Sequencer + JB2A** (the free JB2A pack is enough) when installed; falls back to **Token Magic FX** filters
   for a few conditions when that is installed instead. With neither, nothing happens.
-- Defaults cover Blinded, Charmed, Deafened, Exhaustion, Frightened, Grappled, Incapacitated, Paralyzed,
+- Every status in the dnd5e picker has a default (41 in all), all drawn from the free JB2A pack.
   Petrified (TMFX), Poisoned, Restrained, Stunned, Unconscious/Sleeping, Burning, Bleeding, Cursed, Diseased and
-  Silenced. Prone, Invisible, Concentrating and Dead are intentionally silent.
 - *Configure animations* in the module settings opens a JSON editor. Each status maps to:
   ```json
   "poisoned": {

@@ -135,3 +135,19 @@ export function onRenderTokenHUD(app, html) {
     if ( control.classList.contains("active") ) span.classList.add("active");
   }
 }
+
+/**
+ * Diagnostic: compare the status effects Foundry knows about with what the open Token HUD shows.
+ * Call from the console as game.modules.get("rwa-helpful-bits").api.debugHud() with a HUD open.
+ */
+export function debugHud() {
+  const configured = statusEffectList().filter(e => e.hud !== false).map(e => `${e.id} (${loc(e.name)}, _id=${e._id}, order=${e.order})`);
+  const palette = document.querySelector("#token-hud .status-effects, .token-hud .status-effects");
+  const shown = palette ? Array.from(palette.querySelectorAll("[data-status-id]")).map(el => el.dataset.statusId) : [];
+  const missing = statusEffectList().filter(e => e.hud !== false && !shown.includes(e.id)).map(e => e.id);
+  console.log(`${MODULE_ID} | configured status effects (${configured.length}):\n` + configured.join("\n"));
+  console.log(`${MODULE_ID} | shown in HUD (${shown.length}):`, shown);
+  console.log(`${MODULE_ID} | configured but NOT shown:`, missing);
+  if ( palette ) console.log(`${MODULE_ID} | first HUD control markup:`, palette.querySelector("[data-status-id]")?.outerHTML);
+  return { configured, shown, missing };
+}
